@@ -1,0 +1,11 @@
+[cosbench-driver]
+cosbench-1.novalocal ansible_host=10.83.254.170 ansible_user=centos ansible_ssh_private_key_file=/Users/barisozen/.ssh/infra
+cosbench-2.novalocal ansible_host=10.83.252.10 ansible_user=centos ansible_ssh_private_key_file=/Users/barisozen/.ssh/infra
+cosbench-3.novalocal ansible_host=10.83.252.14 ansible_user=centos ansible_ssh_private_key_file=/Users/barisozen/.ssh/infra
+
+[cosbench-controller]
+cosbench-1.novalocal ansible_host=10.83.254.170 ansible_user=centos ansible_ssh_private_key_file=/Users/barisozen/.ssh/infra
+
+[cosbench:children]
+cosbench-controller
+cosbench-driver

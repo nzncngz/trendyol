@@ -1,0 +1,28 @@
+---
+- hosts: cosbench
+  become: yes
+  tasks:
+   
+    - name: package install
+      shell: yum -y install wget; sudo wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; yum -y install epel-release-latest-7.noarch.rpm; yum -y install htop
+
+    - name: Selinux disabled
+      shell: sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
+
+    - name: Java ram config
+      shell: echo "export _JAVA_OPTIONS="-Xmx44g"" >> /etc/profile
+
+    - name: proxy set
+      shell: unset http_proxy
+
+    - name: unlimit property
+      blockinfile:
+        path: /etc/security/limits.conf
+        block: |
+          centos hard stack unlimited
+          centos soft stack unlimited
+          centos hard nproc unlimited
+          centos soft nproc unlimited
+
+    - name: reboot vm
+      shell: reboot
