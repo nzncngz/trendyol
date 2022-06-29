@@ -75,11 +75,10 @@ resource "openstack_compute_instance_v2" "ansible_server" {
 
    inline = [      
       "sudo chmod 0400 /home/${var.ssh_username}/.ssh/id_rsa",
-      "sudo yum -y install wget; sudo wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm;  sudo yum -y install epel-release-latest-7.noarch.rpm; sudo yum -y install git ansible"
+      "sudo yum -y install wget; sudo wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm;  sudo yum -y install epel-release-latest-7.noarch.rpm; sudo yum -y install git ansible git nano; git clone https://github.com/barisozen/trendyol.git"
       
     ]    
 
   }
 
 }
-
