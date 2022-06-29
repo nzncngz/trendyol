@@ -1,6 +1,0 @@
----
-- name: Configuring cosbench
-  hosts: cosbench 
-  tags: cosbench 
-  roles: 
-  - ansible-role-cosbench 
